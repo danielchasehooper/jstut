@@ -65,7 +65,6 @@
         }
     });
 
-
     var keyHash = {};
     window.addEventListener('keyup', function(e) { keyHash[e.keyCode] = false; });
     window.addEventListener('keydown', function(e) { keyHash[e.keyCode] = true; });
@@ -86,3 +85,19 @@
     }); 
 
 }());
+
+/* 
+
+drawCircle(x, y, radius)
+drawRectangle(x, y, width, height)
+drawTurtle(x, y, angle)
+setColor(red, green, blue) (values are between 0 and 255)
+
+isRightPressed()
+isLeftPressed()
+isUpPressed()
+isDownPressed()
+
+function animate() {}
+
+*/
