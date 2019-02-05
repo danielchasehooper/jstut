@@ -1,5 +1,3 @@
-
-
 (function(){
     "use strict";
     const canvas = document.createElement('canvas');
@@ -27,12 +25,9 @@
         ctx.fill();
     }
 
-    let turtleInfo = {x: 40,y:40,t:0, commands:[]};
-
-    function turtle(x,y,t) {
+    function drawTurtle(x,y,t) {
         const s = 22;
         const r = 8;
-
         
         ctx.save();
         ctx.translate(x,y);
@@ -55,14 +50,6 @@
         ctx.fillStyle = "rgb("+r+","+g+","+b+")";
     }
 
-    Object.assign(window, {
-        ctx,
-        drawCircle,
-        drawRectangle,
-        setColor,
-        turtle
-    });
-
     window.addEventListener('load',function(){
         let b = document.getElementsByTagName("body")[1];
         b.parentNode.removeChild(b);
@@ -78,5 +65,24 @@
         }
     });
 
+
+    var keyHash = {};
+    window.addEventListener('keyup', function(e) { keyHash[e.keyCode] = false; });
+    window.addEventListener('keydown', function(e) { keyHash[e.keyCode] = true; });
+    function isKeyPressed(k) {
+        return keyHash[k] === true ? 1 : 0;
+    }
+
+    Object.assign(window, {
+        ctx,
+        drawCircle,
+        drawRectangle,
+        drawTurtle,
+        setColor,
+        isRightPressed: ()=>isKeyPressed(39),
+        isLeftPressed: ()=>isKeyPressed(37),
+        isUpPressed: ()=>isKeyPressed(38),
+        isDownPressed: ()=>isKeyPressed(40),
+    }); 
 
 }());
